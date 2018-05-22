@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pritam.activityalias">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--By default this is normal scenario
+        In this case if you change the launcher activity as per your latest requirement
+        you can easily do but the thing is that if any shortcut present in your mobile that will be deleted
+        Cause new apk launcher points to different activity
+        -->
+        <!--<activity android:name=".OldActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NewActivity"></activity>-->
+
+        <!--In this case both activity definition should be before alias and here if yoou change inn future
+        shortcut will not be deleted-->
+
+        <!--https://stackoverflow.com/questions/11240023/two-launchers-for-a-single-activity
+        https://developer.android.com/guide/topics/manifest/activity-alias-element
+        http://androidsrc.net/activity-alias-manage-application-upgrades-without-loosing-launcher-icons/
+        https://www.tanelikorri.com/blog/2017/06/android-activity-alias-is-your-friend/
+        https://www.google.com/search?client=firefox-b-ab&q=when+to+use+activity+alias&sa=X&ved=0ahUKEwiesOPB9pnbAhVDvo8KHbACBSUQ1QIIhwEoAA&biw=1280&bih=625
+        -->
+
+        <activity android:name=".NewActivity" />
+        <activity android:name=".OldActivity" />
+
+        <activity-alias android:name="aliasName"
+            android:targetActivity=".NewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+    </application>
+
+</manifest>
